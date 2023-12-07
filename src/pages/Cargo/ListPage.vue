@@ -2,9 +2,16 @@ import { useEmpleadoStore } from 'src/stores/EmpleadoStore';
 <template>
     <div class="q-pa-md">
     <q-btn class="boton" icon="add">Agregar Puesto</q-btn>
+
+    <q-input outlined class="boton" color="green-9" v-model="searchTerm" label="Buscar">
+      <template v-slot:prepend>
+        <q-icon name="search" />
+      </template>
+    </q-input>
+
     <q-table
       title="Puestos"
-      :rows="cargos"
+      :rows="filteredCargos"
       :columns="columns"
       row-key="id"
     >
@@ -21,11 +28,12 @@ import { useEmpleadoStore } from 'src/stores/EmpleadoStore';
 <script setup>
 import { useCargoStore } from '../../stores/CargoStore'
 import { useEmpleadoStore } from '../../stores/EmpleadoStore'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const CargoStore = useCargoStore()
 const EmpleadoStore = useEmpleadoStore()
+const searchTerm = ref('')
 const cargos = ref([])
 const router = useRouter()
 
@@ -34,6 +42,14 @@ const columns = [
   { name: 'nombre', label: 'Nombre', align: 'left', field: 'nombre', sortable: true },
   { name: 'show', align: 'right', field: 'id', sortable: false, 'q-table-col-auto-width': true, slot: 'show' }
 ]
+
+const filteredCargos = computed(() => {
+  return cargos.value.filter(cargo => {
+    return (
+      cargo.nombre.toLowerCase().includes(searchTerm.value.toLowerCase())
+    )
+  })
+})
 
 onMounted(async () => {
   const token = EmpleadoStore.obtenerToken()
