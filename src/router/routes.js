@@ -16,6 +16,23 @@ const routes = [
       {
         path: 'empleado/show/:id',
         component: () => import('src/pages/Empleado/ShowPage.vue')
+      },
+
+      {
+        path: 'cargo',
+        component: () => import('../pages/Cargo/ListPage.vue')
+      },
+      {
+        path: 'cargo/show/:id',
+        component: () => import('../pages/Cargo/ShowPage.vue')
+      },
+      {
+        path: 'sucursal',
+        component: () => import('../pages/Sucursal/ListPage.vue')
+      },
+      {
+        path: 'sucursal/show/:id',
+        component: () => import('../pages/Sucursal/ShowPage.vue')
       }
     ]
   },

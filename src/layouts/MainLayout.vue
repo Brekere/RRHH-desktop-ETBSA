@@ -26,25 +26,43 @@
 
       <q-item-label header>
           Opciones
-        </q-item-label>
+      </q-item-label>
 
       <q-item active-class="tab-active" to="/" class="q-ma-sm navigation-item" clickable v-ripple>
-                <q-item-section avatar>
-                  <q-icon name="home" />
-                </q-item-section>
-                <q-item-section>
-                  Home
-                </q-item-section>
-              </q-item>
+        <q-item-section avatar>
+          <q-icon name="home" />
+        </q-item-section>
+        <q-item-section>
+          Home
+        </q-item-section>
+      </q-item>
 
       <q-item active-class="tab-active" to="/empleado" class="q-ma-sm navigation-item" clickable v-ripple>
-                <q-item-section avatar>
-                  <q-icon name="people" />
-                </q-item-section>
-                <q-item-section>
-                  Empleados
-                </q-item-section>
-              </q-item>
+        <q-item-section avatar>
+          <q-icon name="people" />
+        </q-item-section>
+        <q-item-section>
+          Empleados
+        </q-item-section>
+      </q-item>
+
+      <q-item active-class="tab-active" to="/cargo" class="q-ma-sm navigation-item" clickable v-ripple>
+        <q-item-section avatar>
+          <q-icon name="work" />
+        </q-item-section>
+        <q-item-section>
+          Puestos
+        </q-item-section>
+      </q-item>
+
+      <q-item active-class="tab-active" to="/sucursal" class="q-ma-sm navigation-item" clickable v-ripple>
+        <q-item-section avatar>
+          <q-icon name="corporate_fare" />
+        </q-item-section>
+        <q-item-section>
+          Sucursales
+        </q-item-section>
+      </q-item>
 
     </q-drawer>
 
