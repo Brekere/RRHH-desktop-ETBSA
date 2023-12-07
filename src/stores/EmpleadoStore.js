@@ -19,16 +19,17 @@ export const useEmpleadoStore = defineStore('empleado', {
       return userID
     },
 
+    detalleEmpleado (empleadoId) {
+      this.router.push({ path: `/empleado/show/${empleadoId}` })
+    },
+
     formatfecha (fecha) {
-      // Crear un objeto de fecha
       const dateObject = new Date(fecha)
 
-      // Obtener los componentes de la fecha
       const year = dateObject.getFullYear()
       const month = String(dateObject.getMonth() + 1).padStart(2, '0')
       const day = String(dateObject.getDate()).padStart(2, '0')
 
-      // Formatear la fecha como "aaaa/mm/dd"
       const formattedFecha = `${day}-${month}-${year}`
 
       return formattedFecha
@@ -42,10 +43,25 @@ export const useEmpleadoStore = defineStore('empleado', {
           }
         })
 
-        return response.data // Devolver los datos en lugar de asignar a empleado.value
+        return response.data
       } catch (error) {
         console.error('Error al obtener datos de la API:', error)
-        throw error // Lanzar el error para que se maneje en el componente
+        throw error
+      }
+    },
+
+    async editarEmpleado (userID, token, form) {
+      try {
+        const response = await api.patch('/empleado/' + userID, form, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+
+        return response.data
+      } catch (error) {
+        console.error('Error al actualizar datos del empleado:', error)
+        throw error
       }
     },
 
@@ -57,10 +73,10 @@ export const useEmpleadoStore = defineStore('empleado', {
           }
         })
 
-        return response.data // Devolver los datos en lugar de asignar a empleado.value
+        return response.data
       } catch (error) {
         console.error('Error al obtener datos de la API:', error)
-        throw error // Lanzar el error para que se maneje en el componente
+        throw error
       }
     }
   }

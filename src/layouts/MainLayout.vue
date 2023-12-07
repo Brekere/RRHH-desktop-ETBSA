@@ -9,7 +9,7 @@
           <q-avatar>
             <img src="../assets/logo2.png">
           </q-avatar>
-          Title
+          ETBSA Departamento de recursos humanos
         </q-toolbar-title>
 
         <q-btn

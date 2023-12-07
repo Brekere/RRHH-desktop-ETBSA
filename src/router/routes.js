@@ -12,6 +12,10 @@ const routes = [
       {
         path: 'empleado',
         component: () => import('src/pages/Empleado/ListPage.vue')
+      },
+      {
+        path: 'empleado/show/:id',
+        component: () => import('src/pages/Empleado/ShowPage.vue')
       }
     ]
   },
